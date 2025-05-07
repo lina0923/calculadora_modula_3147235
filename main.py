@@ -1,5 +1,6 @@
 from operaciones.aprendiz_a import suma, resta, multiplicacion
-from operaciones.aprendiz_b import division, modulo, potencia
+from operaciones.aprendiz_b import division, modulo, potencia  # Cambié 'aprendiz-b' por 'aprendiz_b'
+
 
 def mostrar_menu():
     print("""
@@ -21,8 +22,13 @@ while True:
         print("Saliendo...")
         break
 
-    a = float(input("Ingrese el primer número: "))
-    b = float(input("Ingrese el segundo número: "))
+    # Input validation for numbers
+    try:
+        a = float(input("Ingrese el primer número: "))
+        b = float(input("Ingrese el segundo número: "))
+    except ValueError:
+        print("Por favor, ingrese números válidos.")
+        continue
 
     if opcion == '1':
         print("Resultado:", suma(a, b))
